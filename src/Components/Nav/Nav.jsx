@@ -10,7 +10,7 @@ const Nav = () => {
     }`;
 
   return (
-    <header className="w-full bg-[#094C61] text-white h-20 fixed top-0 z-10 shadow-md">
+    <header className="fixed top-0 left-0 right-0 w-full bg-[#094C61] text-white h-20 z-50 shadow-md overflow-x-hidden">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-4 md:px-10 lg:px-20">
         {/* Logo + Hamburger */}
         <div className="flex items-center justify-between w-full md:w-auto">
@@ -33,37 +33,42 @@ const Nav = () => {
         {/* NAV */}
         <nav
           className={`
-            absolute top-full left-0 w-full bg-[#094C61]
-            md:static md:w-auto md:bg-transparent
+        absolute top-20 left-0 w-full bg-[#094C61]
+        md:static md:w-auto md:bg-transparent
 
-            overflow-hidden transition-all duration-300 ease-in-out
+        transition-all duration-300 ease-in-out
+        overflow-hidden
 
-            ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
+        ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
 
-            md:max-h-full md:opacity-100 md:overflow-visible
-          `}
+        md:max-h-full md:opacity-100 md:overflow-visible
+      `}
         >
-          <ul className="flex flex-col items-end gap-6 md:flex-row md:items-center md:gap-20 pr-4 md:pr-0">
+          <ul className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 px-4 md:px-0 py-4 md:py-0">
             <li>
               <NavLink to="/" className={linkClass}>
                 Home
               </NavLink>
             </li>
+
             <li>
               <NavLink to="/services" className={linkClass}>
                 Services
               </NavLink>
             </li>
+
             <li>
               <NavLink to="/about" className={linkClass}>
                 About Us
               </NavLink>
             </li>
+
             <li>
               <NavLink to="/case-studies" className={linkClass}>
                 Case Studies
               </NavLink>
             </li>
+
             <li>
               <NavLink to="/contact" className={linkClass}>
                 Contact Us

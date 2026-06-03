@@ -3,6 +3,7 @@ import Button from "../Buttons";
 import { useNavigate } from "react-router-dom";
 import ServiceCard from "../servicecard";
 import testimonials from "./testimonials";
+import Accordion from "../Accordion";
 import wdImg from "../../assets/Wd.png";
 import seoImg from "../../assets/seo.png";
 import sommImg from "../../assets/smm.png";
@@ -29,74 +30,184 @@ const Home = () => {
     setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
   const next = () => setCurrent((c) => (c + 1) % testimonials.length);
 
+  const faqItems = [
+    {
+      question: "1. What services do you offer?",
+      answer:
+        "We help your business grow online. We do website design, custom website development, SEO (Google ranking), Meta Ads (Facebook & Instagram ads), and social media management. Everything is made to help you get more customers online.",
+    },
+    {
+      question: "2. How does the website design process work?",
+      answer:
+        "We start with a free consultation to understand your business. Then we plan, design, and build your website step by step. You get to review it before it goes live.",
+    },
+    {
+      question:
+        "3. Can you build custom websites with special features I need?",
+      answer:
+        "Yes. We can build custom websites with special features like booking systems, online stores, forms, or anything your business needs.",
+    },
+    {
+      question: "4. Do you also redesign existing websites?",
+      answer:
+        "Yes. If your website looks old or is not working well, we can redesign it to look modern, fast, and easy to use.",
+    },
+    {
+      question: "5. How long does it take to build a website?",
+      answer:
+        "It depends on the size of the website. Most small business websites take 1 to 3 weeks. Bigger or custom projects may take longer.",
+    },
+    {
+      question: "6. Do you help my website show up on Google (SEO)?",
+      answer:
+        "Yes. We improve your website so it can appear on Google when people search for your services. This helps bring more visitors to your business.",
+    },
+    {
+      question: "7. What results can I expect from SEO services?",
+      answer:
+        "SEO helps more people find your business online. Over time, this can lead to more website traffic, more inquiries, and more customers.",
+    },
+    {
+      question: "8. Do you manage Facebook and Instagram ads (Meta Ads)?",
+      answer:
+        "Yes. We create and manage ads on Facebook and Instagram to help you reach the right people and bring in leads or sales.",
+    },
+    {
+      question: "9. Can you also manage my social media pages for me?",
+      answer:
+        "Yes. We can handle your social media pages by creating posts, writing captions, and keeping your pages active and professional.",
+    },
+    {
+      question: "10. How do I get started or book a consultation with you?",
+      answer:
+        "You can get started by booking a free consultation. We will talk about your business and see how we can help you grow online.",
+    },
+  ];
+
   return (
-    <main className="px-4 md:p-40 flex flex-col justify-center items-center gap-40 w-full">
-      <section className="flex flex-col gap-8 max-w-225 text-center items-center">
+    <main className="px-4 md:p-10 flex flex-col justify-center items-center gap-10 w-full">
+      <section
+        className="flex flex-col gap-8 max-w-225 text-center items-center 
+mt-20
+px-4 py-4 
+md:px-10 md:py-10 
+lg:px-20 lg:py-20"
+      >
         <div className="space-y-6">
-          <h1 className="text-6xl font-extrabold">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
             You Run the Business. We'll Bring the Customers
           </h1>
-          <p>
+
+          <p className="text-base md:text-lg max-w-2xl">
             A website that converts visitors into customers, ads that reach the
             right people at the right time, social media that builds a brand
             they trust, and SEO that makes sure your business is the first one
             they find.
           </p>
         </div>
-        <div className="flex flex-row justify-center items-center gap-4 mt-6">
-          <Button onClick={() => console.log("open modal")}>
+
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 w-full sm:w-auto">
+          <Button
+            onClick={() => console.log("open modal")}
+            className="w-full sm:w-auto"
+          >
             Get Free Consultation
           </Button>
-          <Button variant="secondary" onClick={() => navigate("/case-studies")}>
+
+          <Button
+            variant="secondary"
+            onClick={() => navigate("/case-studies")}
+            className="w-full sm:w-auto"
+          >
             View Case Studies
           </Button>
         </div>
       </section>
 
-      <section className="h-128.75 flex items-stretch justify-between gap-4">
-        <img className="h-150 w-100" src={rect5} alt="web design" />
+      <section
+        className="flex flex-col lg:flex-row items-stretch justify-between gap-4
+mx-4 md:mx-5 lg:mx-5"
+      >
         <img
-          className="h-75 w-100"
+          className="w-screen -mx-4 md:mx-0 h-64 lg:h-150 lg:w-100 object-cover"
+          src={rect5}
+          alt="web design"
+        />
+
+        <img
+          className="w-screen -mx-4 md:mx-0 h-64 lg:h-75 lg:w-100 object-cover"
           src={rect61}
           alt="social media management"
         />
-        <img className="h-75 w-100" src={rect7} alt="SEO" />
-        <img className="h-150 w-100" src={group} alt="Meta Ads" />
+
+        <img
+          className="w-screen -mx-4 md:mx-0 h-64 lg:h-75 lg:w-100 object-cover"
+          src={rect7}
+          alt="SEO"
+        />
+
+        <img
+          className="w-screen -mx-4 md:mx-0 h-64 lg:h-150 lg:w-100 object-cover"
+          src={group}
+          alt="Meta Ads"
+        />
       </section>
 
-      <section className="bg-[#B3C8CE] w-full p-6 flex flex-col gap-5 border-0 rounded-lg">
-        <div>
-          <p className="text-2xl">Trusted Partners:</p>
+      <section className="bg-[#B3C8CE] w-full p-6 md:p-10 lg:p-16 flex flex-col gap-6 rounded-lg">
+        <div className="text-center md:text-left">
+          <p className="text-xl md:text-2xl font-medium">Trusted Partners:</p>
         </div>
-        <div className="flex flex-row gap-10">
-          <img className="w-20 h-20" src={blueJade} alt="BlueJade Logo" />
-          <img className="w-20 h-20" src={bongo} alt="BongoGreeland Logo" />
+
+        <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-10">
           <img
-            className="w-20 h-20"
+            className="w-16 h-16 md:w-20 md:h-20 object-contain"
+            src={blueJade}
+            alt="BlueJade Logo"
+          />
+
+          <img
+            className="w-16 h-16 md:w-20 md:h-20 object-contain"
+            src={bongo}
+            alt="BongoGreeland Logo"
+          />
+
+          <img
+            className="w-16 h-16 md:w-20 md:h-20 object-contain"
             src={littleSmart}
             alt="Little Smart Academy logo"
           />
-          <img className="w-20 h-20" src={menders} alt="Menders Shoe logo" />
+
+          <img
+            className="w-16 h-16 md:w-20 md:h-20 object-contain"
+            src={menders}
+            alt="Menders Shoe logo"
+          />
         </div>
       </section>
 
-      <section className="w-full flex justify-center">
-        <div className="flex gap-6 flex-wrap justify-center">
+      <section
+        className="w-full flex justify-center
+mx-4 md:mx-10 lg:mx-20"
+      >
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 w-full">
           <ServiceCard
             title="Website Design & Development"
             description="Your website is your digital storefront. It's often the first impression a customer gets. We build fast, professional websites designed to turn visitors into paying customers."
             image={wdImg}
           />
+
           <ServiceCard
             title="SEO"
             description="When someone searches for what you offer, your business should be the first one they find. We optimise your online presence so the right customers find you — without you paying for every click."
             image={seoImg}
           />
+
           <ServiceCard
             title="Social Media Marketing"
             description="Your customers are on social media every day. We create and manage content that builds your brand, grows your audience, and keeps your business top of mind when they're ready to buy."
             image={sommImg}
           />
+
           <ServiceCard
             title="Paid Ads"
             description="Stop waiting for customers to find you — go to them. We run targeted ads on Facebook and Instagram that put your business in front of the right people at the right time, driving real enquiries and sales."
@@ -360,6 +471,125 @@ const Home = () => {
                 aria-label={`Testimonial ${i + 1}`}
               />
             ))}
+          </div>
+        </div>
+      </section>
+      {/* How we work section */}
+      <section
+        className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center gap-10
+bg-linear-to-b md:bg-linear-to-r from-white from-10% to-[#FFC71F]"
+      >
+        {/* TEXT SECTION (40%) */}
+        <div className="w-full md:w-[40%] flex flex-col justify-center p-6 md:p-10 gap-4">
+          <h3 className="font-bold text-xl md:text-2xl">
+            Getting Started is Easier Than You Think..
+          </h3>
+
+          <p className="text-sm md:text-base">
+            A Process Built Around Your Growth. We keep it simple so you can
+            stay focused on running your business while we handle the rest.
+          </p>
+
+          <Button
+            onClick={() => console.log("open modal")}
+            className="w-full md:w-auto"
+          >
+            Work with us
+          </Button>
+        </div>
+
+        {/* GRID SECTION (60%) */}
+        <div className="w-full md:w-[60%] grid grid-cols-1 md:grid-cols-3 gap-6 p-6 md:p-10 lg:p-16">
+          {/* STEP 1 */}
+          <div className="md:col-span-3 flex flex-col items-center text-center gap-4 p-6 rounded-xl bg-white shadow-sm">
+            <img
+              src={Checksquare}
+              alt=""
+              className="w-10 h-10 md:w-20 md:h-20"
+            />
+
+            <p className="font-bold">1. We talk</p>
+
+            <p className="max-w-xl text-sm md:text-base">
+              Tell us about your business and what you want to achieve. No
+              commitment, just a conversation.
+            </p>
+          </div>
+
+          {/* STEP 2 */}
+          <div className="flex flex-col items-center text-center gap-4 p-6 rounded-xl bg-white shadow-sm">
+            <img
+              src={Checksquare}
+              alt=""
+              className="w-10 h-10 md:w-20 md:h-20"
+            />
+
+            <p className="font-bold">2. We plan</p>
+
+            <p className="text-sm md:text-base">
+              We create a clear strategy based on your goals and what your
+              business needs.
+            </p>
+          </div>
+
+          {/* STEP 3 */}
+          <div className="flex flex-col items-center text-center gap-4 p-6 rounded-xl bg-white shadow-sm">
+            <img
+              src={Checksquare}
+              alt=""
+              className="w-10 h-10 md:w-20 md:h-20"
+            />
+
+            <p className="font-bold">3. We build</p>
+
+            <p className="text-sm md:text-base">
+              We design and develop your website or campaign step by step with
+              you.
+            </p>
+          </div>
+
+          {/* STEP 4 */}
+          <div className="flex flex-col items-center text-center gap-4 p-6 rounded-xl bg-white shadow-sm">
+            <img
+              src={Checksquare}
+              alt=""
+              className="w-10 h-10 md:w-20 md:h-20"
+            />
+
+            <p className="font-bold">4. We launch</p>
+
+            <p className="text-sm md:text-base">
+              We go live and help your business start getting real results
+              online.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* FAQ Section */}
+      <section className="w-full py-16 px-4 md:px-10 lg:px-20 bg-gray-50">
+        {/* Heading */}
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h2 className="text-2xl md:text-4xl font-black">
+            A little more information about us
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Here are some quick answers to help you understand how we work.
+          </p>
+        </div>
+
+        {/* Accordion goes here */}
+        <Accordion items={faqItems} />
+      </section>
+      <section className="bg-[#094C61] w-full my-8 sm:my-12 lg:my-20 px-4 sm:px-6 lg:px-10 py-6 sm:py-8 lg:py-10">
+        <div className="flex flex-col gap-4 sm:gap-5 justify-between items-center text-center">
+          <h2 className="text-white font-bold text-lg sm:text-xl lg:text-2xl">
+            Let's work together
+          </h2>
+
+          <div>
+            <Button onClick={() => console.log("open modal")}>
+              Lets have a conversation
+            </Button>
           </div>
         </div>
       </section>
